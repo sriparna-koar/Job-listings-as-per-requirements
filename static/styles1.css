@@ -1,0 +1,85 @@
+/* styles.css */
+/* .job-details {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    font-size: 24px;
+    color: #007BFF;
+}
+
+.location {
+    color: #777;
+    font-style: italic;
+}
+
+.description {
+    margin-top: 10px;
+}
+
+.contact {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.back-link {
+    display: block;
+    margin-top: 20px;
+    color: #007BFF;
+    text-decoration: none;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+} */
+/* Apply these styles to the .job-details section */
+.job-details {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: left;
+}
+
+.job-details h1 {
+    font-size: 28px;
+    color: #007BFF;
+}
+
+.job-details .location {
+    color: #777;
+    font-style: italic;
+}
+
+.job-details .description {
+    margin-top: 20px;
+    line-height: 1.4;
+}
+
+.job-details .contact {
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+/* Back link styles */
+.job-details .back-link {
+    display: inline-block;
+    margin-top: 20px;
+    color: #007BFF;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.job-details .back-link:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}

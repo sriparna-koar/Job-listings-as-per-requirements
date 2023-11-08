@@ -1,0 +1,24 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Job Board</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+</head>
+<body>
+    <div class="header">
+    <h1>Job Listings</h1>
+</div>
+    <ul class="job-list">
+        {% for job in jobs %}
+            <li class="job-item">
+                <a href="{{ url_for('job_detail', job_id=job.id) }}"class="job-link">{{ job.title }} at {{ job.company }}</a></li>
+        {% endfor %}
+    </ul>
+    <p><a href="{{ url_for('post_job') }}">Post a Job</a></p>
+    
+    <p><a href="{{ url_for('register') }}">Register for your job</a></p>
+    <p><a href="{{ url_for('login') }}">Enter Login credentials</a></p>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!-- templates/job_detail.html -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{ job.title }} at {{ job.company }}</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles1.css') }}"
+    />
+  </head>
+  <body>
+    <div class="job-details">
+      <h1>{{ job.title }} at {{ job.company }}</h1>
+      <p class="location">Location: {{ job.location }}</p>
+      <p class="description">{{ job.description }}</p>
+      <p class="contact">Contact: {{ job.email }}</p>
+      <a href="{{ url_for('index') }}" class="back-link"
+        >Back to Job Listings</a
+      >
+    </div>
+  </body>
+</html>

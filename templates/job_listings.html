@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Job Listings</title>
+    <!-- Add your head content and styles here -->
+</head>
+<body>
+    <div class="container">
+        <h2>Job Listings</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Company</th>
+                    <th>Location</th>
+                    <th>Description</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for job in jobs %}
+                <tr>
+                    <td>{{ job.title }}</td>
+                    <td>{{ job.company }}</td>
+                    <td>{{ job.location }}</td>
+                    <td>{{ job.description }}</td>
+                    <td>{{ job.email }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <p><a href="{{ url_for('post_job') }}">Post a Job</a></p>
+    </div>
+</body>
+</html>
