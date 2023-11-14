@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delete Job</title>
+</head>
+<body>
+    <h1>Delete Job</h1>
+
+    <p>Are you sure you want to delete the following job details?</p>
+
+    <p><strong>Title:</strong> {{ job.title }}</p>
+    <p><strong>Company:</strong> {{ job.company }}</p>
+    <p><strong>Location:</strong> {{ job.location }}</p>
+    <p><strong>Description:</strong> {{ job.description }}</p>
+    <p><strong>Email:</strong> {{ job.email }}</p>
+
+    <form method="POST" action="{{ url_for('delete_job', job_id=job.id) }}">
+        <button type="submit" class="btn btn-danger">Confirm Delete</button>
+    </form>
+
+    <a href="{{ url_for('index') }}">Cancel</a>
+</body>
+</html>

@@ -45,12 +45,21 @@
 
 /* Header styles */
 .header {
-    background-color: #007BFF;
-    color: #fff;
+    background-color: #062b52;
+    color: #ebebeb;
     text-align: center;
     padding: 20px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 }
+.container {
+    
+    background-color:  rgb(217, 217, 237);
+    height: auto;
+    margin:auto;
+}
+    
+
+
 
 /* Job list styles */
 .job-list {
@@ -59,8 +68,8 @@
 }
 
 .job-item {
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
+    background-color: rgb(223, 235, 244);
+    border: 1px solid #8f7474;
     padding: 20px;
     margin: 20px 0;
     border-radius: 5px;
@@ -77,7 +86,7 @@
 /* Job link styles */
 .job-link {
     text-decoration: none;
-    color: #007BFF;
+    color: #012851;
     font-weight: bold;
     transition: color 0.2s;
 }
@@ -90,7 +99,7 @@
 /* Button styles (e.g., edit and delete buttons) */
 .button {
     background-color: #007BFF;
-    color: #fff;
+    color: #957878;
     padding: 8px 16px;
     border: none;
     border-radius: 5px;

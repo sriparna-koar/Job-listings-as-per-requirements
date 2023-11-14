@@ -95,7 +95,13 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_mail import Mail
 from flask_wtf import FlaskForm
 from flask_login import UserMixin
-from wtforms import StringField, PasswordField, SubmitField, BooleanField
+from wtforms import (
+    StringField,
+    PasswordField,
+    SubmitField,
+    TextAreaField,
+    BooleanField,
+)
 from wtforms.validators import DataRequired, Length, Email, EqualTo
 from flask_login import login_user, login_required, current_user, logout_user
 from flask_bcrypt import Bcrypt  # Import Bcrypt
@@ -126,6 +132,34 @@ class Job(db.Model):
     location = db.Column(db.String(100))
     description = db.Column(db.Text, nullable=False)
     email = db.Column(db.String(100), nullable=False)
+
+class EditJobForm(FlaskForm):
+    title = StringField("Title", validators=[DataRequired()])
+    company = StringField("Company", validators=[DataRequired()])
+    location = StringField("Location")
+    description = TextAreaField("Description", validators=[DataRequired()])
+    email = StringField("Email", validators=[DataRequired()])
+
+# @app.route("/edit_job/<int:job_id>", methods=["GET", "POST"])
+# @login_required
+# def edit_job(job_id):
+#     job = Job.query.get(job_id)
+#     form = EditJobForm(obj=job)
+
+#     if form.validate_on_submit():
+#         # Update the job details from the form data
+#         job.title = form.title.data
+#         job.company = form.company.data
+#         job.location = form.location.data
+#         job.description = form.description.data
+#         job.email = form.email.data
+
+#         db.session.commit()
+#         flash("Job details updated successfully", "success")
+#         return redirect(url_for("job_detail", job_id=job.id))
+
+#     return render_template("edit_job.html", job=job, form=form)
+
 
 
 class User(db.Model, UserMixin):
@@ -161,14 +195,6 @@ class RegistrationForm(FlaskForm):
             raise ValidationError(
                 "Email is already in use. Please choose a different one."
             )
-
-class EditJobForm(FlaskForm):
-    title = StringField("Title", validators=[DataRequired()])
-    company = StringField("Company", validators=[DataRequired()])
-    location = StringField("Location")
-    description = StringField("Description", validators=[DataRequired()])
-    email = StringField("Email", validators=[DataRequired()])
-    submit = SubmitField("Edit Job")
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -210,6 +236,41 @@ def post_job():
         return redirect(url_for("index"))
 
     return render_template("post_job.html")
+@app.route("/edit_job/<int:job_id>", methods=["GET", "POST"])
+@login_required
+def edit_job(job_id):
+    job = Job.query.get(job_id)
+    form = EditJobForm(obj=job)
+
+    if form.validate_on_submit():
+        # Update the job details from the form data
+        job.title = form.title.data
+        job.company = form.company.data
+        job.location = form.location.data
+        job.description = form.description.data
+        job.email = form.email.data
+
+        db.session.commit()
+        flash("Job details updated successfully", "success")
+        return redirect(url_for("job_detail", job_id=job.id))
+
+    return render_template("edit_job.html", job=job, form=form)
+
+@app.route("/delete_job/<int:job_id>", methods=["GET", "POST"])
+@login_required
+def delete_job(job_id):
+    job = Job.query.get(job_id)
+    if job:
+        if request.method == "POST":
+            db.session.delete(job)
+            db.session.commit()
+            flash("Job details deleted successfully", "success")
+            return redirect(url_for("index"))
+        return render_template("delete_job.html", job=job)
+    else:
+        flash("Job not found or unable to delete.", "danger")
+        return redirect(url_for("index"))
+
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -246,15 +307,14 @@ def register():
         return redirect(url_for("login"))
     return render_template("register.html", title="Register", form=form)
 
+
 @app.route("/job_listings", methods=["GET", "POST"])
 @login_required
 def job_listings():
     if request.method == "POST":
-        # Process any actions or filters you want to implement
         pass
 
-    jobs = Job.query.all()
-    return render_template("job_listings.html", jobs=jobs)
+
 if __name__ == "__main__":
     with app.app_context():
         db.create_all()

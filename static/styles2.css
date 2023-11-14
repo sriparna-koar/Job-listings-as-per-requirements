@@ -9,12 +9,22 @@ body {
 }
 
 /* Style for the container */
-.container {
+/* .container {
     width: 300px;
     margin: 0 auto;
     padding: 20px;
     background-color: #fff;
     border: 1px solid #e1e1e1;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+} */
+
+.container {
+    /* width: 300px; */
+    /* margin: 0 auto; */
+    padding: 20px;
+    background-color:  rgb(217, 217, 237);
+    border: 1px solid #e4c7c7;
     border-radius: 5px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
@@ -45,7 +55,7 @@ h2 {
 
 /* Style for the "Log In" button */
 .btn-primary {
-    background-color: #007bff;
+    background-color: #032346;
     color: #fff;
     padding: 10px 20px;
     border: none;
@@ -57,8 +67,8 @@ h2 {
 /* Style for the "Register" link */
 a {
     text-decoration: none;
-    color: #007bff;
-    font-size: 14px;
+    color: #042446;
+    font-size: 16px;
 }
 
 /* Hover effect for the "Register" link */
